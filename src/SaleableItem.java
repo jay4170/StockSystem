@@ -6,6 +6,7 @@ public class SaleableItem {
     private int productNumber;
     private String type;
     private String sellByDate;
+    private int quantity;
 
     /**
      * Creates a new SaleableItem with the given name, product number, type, and sell-by date.
@@ -15,11 +16,12 @@ public class SaleableItem {
      * @param type the type of the item
      * @param sellByDate the sell-by date of the item, in the format yyyyddmm
      */
-    public SaleableItem(String name, int productNumber, String type, String sellByDate) {
+    public SaleableItem(String name, int productNumber, String type, String sellByDate,int quantity) {
         this.name = name;
         this.productNumber = productNumber;
         this.type = type;
         this.sellByDate = sellByDate;
+        this.quantity = quantity;
     }
 
     /**
@@ -92,5 +94,18 @@ public class SaleableItem {
      */
     public void setSellByDate(String sellByDate) {
         this.sellByDate = sellByDate;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * Sets the sell-by date of the item.
+     *
+     * @param sellByDate the new sell-by date of the item, in the format yyyyddmm
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

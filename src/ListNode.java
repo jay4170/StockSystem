@@ -72,6 +72,13 @@ public class ListNode<T> {
         current.setNext (new ListNode<T> (null, data));
     }
 
+    /**
+     Returns the element at the specified position in this list.
+     If the index is out of range, an ArrayIndexOutOfBoundsException is thrown.
+     @param i the index of the element to be returned
+     @return the element at the specified index
+     @throws ArrayIndexOutOfBoundsException if the index is out of range
+     */
     public T get (int i) {
         ListNode<T> current = this;
         int currentIndex = 0;
@@ -86,6 +93,13 @@ public class ListNode<T> {
         throw new ArrayIndexOutOfBoundsException (i);
     }
 
+    /**
+     Replaces the element at the specified position in this list with the specified element.
+     If the index is out of range, an ArrayIndexOutOfBoundsException is thrown.
+     @param data the element to be stored at the specified position
+     @param i the index of the element to be replaced
+     @throws ArrayIndexOutOfBoundsException if the index is out of range
+     */
     public void set (T data, int i) {
         ListNode<T> current = this;
         int currentIndex = 0;
@@ -100,7 +114,14 @@ public class ListNode<T> {
         }
         throw new ArrayIndexOutOfBoundsException (i);
     }
-
+    /**
+     Inserts the specified element at the specified position in this list.
+     If the index is out of range, an ArrayIndexOutOfBoundsException is thrown.
+     @param data the element to be inserted
+     @param index the index at which the element is to be inserted
+     @return the modified list with the element inserted at the specified index
+     @throws ArrayIndexOutOfBoundsException if the index is out of range
+     */
     public ListNode<T> insert (T data, int index) {
         ListNode<T> current = this;
         int currentIndex = 0;
@@ -124,35 +145,42 @@ public class ListNode<T> {
         throw new ArrayIndexOutOfBoundsException (index);
     }
 
-    // deletes node at given index number, and returns head of new list
+    /**
+
+     Deletes the element at the specified position in this list.
+     If the index is out of range, an ArrayIndexOutOfBoundsException is thrown.
+     @param index the index of the element to be deleted
+     @return the modified list with the element at the specified index removed
+     @throws ArrayIndexOutOfBoundsException if the index is out of range
+     */
     public ListNode<T> delete (int index) {
         ListNode<T> current = this;
         int currentIndex = 0;
-
         if (index == 0) { // delete first node, so just return the next node
             return next;
         }
-
         while (current != null) {
             if (currentIndex+1 == index) {
-                // the node to delete is the next one
-                // so we set the current node's next to the next of the next
-                current.setNext ( current.getNext().getNext());
-
-                return this; // remember, the delete method was called on the first item
+            current.setNext ( current.getNext().getNext());
+                return this;
             }
             currentIndex += 1;
             current = current.getNext ();
         }
         throw new ArrayIndexOutOfBoundsException (index);
     }
+    /**
 
+     Returns a string representation of this list.
+     The string representation consists of a list of the elements in this list,
+     in the order they appear, enclosed in square brackets ("[]").
+     Adjacent elements are separated by the characters ", " (comma and space).
+     @return a string representation of this list
+     */@Override
     public String toString () {
         String result = "";
-
         result += "[";
         ListNode<T> current = this;
-
         while (current != null) {
             result += current.data;
             if (current.next != null) {
@@ -160,9 +188,7 @@ public class ListNode<T> {
             }
             current = current.next;
         }
-
         result += "]";
-
         return result;
     }
 }
